@@ -18,7 +18,7 @@ Here ```mcash-priv8.pem``` is the private key converted to PKCS8.
 As mCASH's documentation says, we will need to SHA256 the request body. If you send a GET request you should SHA256 an empty string in Java. Below are examples on how to SHA256 the body, sort headers and sign a message (for setting the **Authorization** header).
 
 *******
-**SHA256 the body using MessageDigest**
+###### SHA256 the body using MessageDigest
 ```
 public static String hashBody(String body) {
         byte[] hash = null;
@@ -32,7 +32,7 @@ public static String hashBody(String body) {
     }
 ```
 
-**Sort headers starting with 'x-mcash' and uppercase them**
+###### Sort headers starting with 'x-mcash' and uppercase them
 
 The following code takes request headers and simply sort them (Map<String, Collection<String>> is the format request headers comes in using spring boot)
 
@@ -47,7 +47,7 @@ public static Map<String, String> sortedHeaders(Map<String, Collection<String>> 
     }
 ```
 
-** Compose the message string method|url|parameters **
+###### Compose the message string method|url|parameters 
 ```
 public static String getPreparedMessage(Map<String, Collection<String>> headers, String url, String method) {
     Map<String, String> sorted = sortedHeaders(headers);
@@ -69,7 +69,7 @@ public static String getPreparedMessage(Map<String, Collection<String>> headers,
 }
 ```
 
-** Read the private key (PKCS8) from file path **
+###### Read the private key (PKCS8) from file path
 
 Notice the string replacement, we remove the header and footer in the key file when reading it.
 
@@ -105,7 +105,7 @@ public static PrivateKey getPemPrivateKey(String filepath, String algorithm) {
         }
     }
 ```
-** Sign the message (method|url|parameters) **
+###### Sign the message (method|url|parameters)
 Here we send in the private key we read from file and the string we got from the method ```getPreparedMessage```.
 
 ```
