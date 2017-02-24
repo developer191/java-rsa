@@ -1,7 +1,7 @@
 ## mCASH KEY authentication in Java
 
 ### Set up in mCASH testbed
-First of all; save the private key given in the **testbed** environment right away in a file and call it something like ```mcash_privkey.pem```. For production you will have too create your own keypair.
+First of all; save the private key given in the **testbed** environment right away in a file and call it something like ```mcash_privkey.pem```. For production you will have to create your own keypair.
 
 ##### Convert mcash_privkey.pem to a format that Java supports
 mCASH has generated the private key in **PKCS1#v1_5** format, which Java does not support out of the box. Therefore we have to convert it into **PKCS8** so that we can use built in functionality in Java.
